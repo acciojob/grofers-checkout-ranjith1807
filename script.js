@@ -8,21 +8,30 @@ const getSum = () => {
 
   priceElements.forEach(element => {
     const priceValue = parseFloat(element.textContent);
-    
     if (!isNaN(priceValue)) {
       total += priceValue;
     }
   });
 
-  let ansDisplay = document.getElementById('ans');
-  
-  if (!ansDisplay) {
-    ansDisplay = document.createElement('div');
-    ansDisplay.id = 'ans';
-    document.body.appendChild(ansDisplay);
+  const table = document.querySelector("table");
+  let ansRow = document.getElementById('ans-row');
+
+  if (!ansRow) {
+    ansRow = document.createElement('tr');
+    ansRow.id = 'ans-row';
+    
+    const itemCell = document.createElement('td');
+    itemCell.textContent = 'Total';
+    
+    const ansCell = document.createElement('td');
+    ansCell.id = 'ans';
+    
+    ansRow.appendChild(itemCell);
+    ansRow.appendChild(ansCell);
+    table.appendChild(ansRow);
   }
 
-  ansDisplay.textContent = total;
+  document.getElementById('ans').textContent = total;
 };
 
 getSumBtn.addEventListener("click", getSum);
