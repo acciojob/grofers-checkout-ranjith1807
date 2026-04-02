@@ -3,27 +3,26 @@ getSumBtn.append("Get Total Price");
 document.body.appendChild(getSumBtn);
 
 const getSum = () => {
- const priceElements = document.querySelectorAll('.price');
-  
+  const priceElements = document.querySelectorAll('.prices');
   let total = 0;
 
- priceElements.forEach(element => {
+  priceElements.forEach(element => {
     const priceValue = parseFloat(element.textContent);
     
-   if (!isNaN(priceValue)) {
+    if (!isNaN(priceValue)) {
       total += priceValue;
     }
   });
 
- let totalDisplay = document.getElementById('total-display');
+  let ansDisplay = document.getElementById('ans');
   
-  if (!totalDisplay) {
-    totalDisplay = document.createElement('div');
-    totalDisplay.id = 'total-display';
-    document.body.appendChild(totalDisplay);
+  if (!ansDisplay) {
+    ansDisplay = document.createElement('div');
+    ansDisplay.id = 'ans';
+    document.body.appendChild(ansDisplay);
   }
 
-  totalDisplay.textContent = `Total Price: $${total.toFixed(2)}`;
+  ansDisplay.textContent = total;
 };
 
 getSumBtn.addEventListener("click", getSum);
